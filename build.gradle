@@ -3,15 +3,14 @@ buildscript {
     mavenCentral()
   }
   dependencies {
-    // Spring Boot Gradle Plugin を使用
+    // Spring Boot Gradle Plugin 
     classpath 'org.springframework.boot:spring-boot-gradle-plugin:2.2.0.RELEASE'
-    // Google App Engine Gradle plugin を使用
+    // Google App Engine Gradle plugin
     classpath 'com.google.cloud.tools:appengine-gradle-plugin:2.2.0'
   }
 }
 
 plugins {
-  // Java プラグインを導入
   id 'java'
   // https://plugins.gradle.org/plugin/org.springframework.boot
   id 'org.springframework.boot' version '2.2.0.RELEASE'
@@ -19,7 +18,6 @@ plugins {
   id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 }
 
-// App Engine プラグインを導入
 apply plugin: 'com.google.cloud.tools.appengine'
 
 repositories {
@@ -27,35 +25,27 @@ repositories {
 }
 
 dependencies {
-  // App Engine API の最新版
   implementation 'com.google.appengine:appengine-api-1.0-sdk:+'
-  // Spring Web
   implementation 'org.springframework.boot:spring-boot-starter-web'
   
   compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
-  // Test
   implementation 'io.springfox:springfox-swagger2:2.6.1'
 	implementation 'io.springfox:springfox-swagger-ui:2.6.1'
   testImplementation('org.springframework.boot:spring-boot-starter-test') {
-    // JUnit 4 のサポートを除外する
     exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
   }
 }
 
 test {
-  // JUnit 5 のサポートを有効にする
   useJUnitPlatform()
 
   testLogging {
-    // テスト時の標準出力と標準エラー出力を表示する
     showStandardStreams true
-    // イベントを出力する (TestLogEvent)
     events 'started', 'skipped', 'passed', 'failed'
   }
 }
 
-// Web アプリケーションのグループIDとバージョン
 group   = "com.example.helloworld"
 version = "0.0.1"
 
@@ -63,21 +53,13 @@ version = "0.0.1"
 sourceCompatibility = '11'
 targetCompatibility = '11'
 
-// Google App Engine タスクの設定
 appengine {
-  // デプロイ時の設定
-  // GCLOUD_CONFIG を指定しておくと
-  // gcloud config で設定しているプロジェクト情報がセットされる
   deploy {
-    // デプロイ先の Google Cloud Project ID
     projectId = "GCLOUD_CONFIG"
-    // デプロイによって反映される Web アプリのバージョン
-    // 指定しなければ新しく生成される
     version = "GCLOUD_CONFIG"
   }
 }
 
-// デプロイ前にテストを実行
 appengineDeploy.dependsOn test
 appengineStage.dependsOn test
 

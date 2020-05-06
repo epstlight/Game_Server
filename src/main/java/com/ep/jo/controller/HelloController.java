@@ -14,4 +14,10 @@ public class HelloController {
 	public String hello() {
 		return "hello";
 	}
+	
+	@GetMapping("/jj")
+	public String jj() {
+		return "최준혀 병신";
+	}
+	
 }
