@@ -2,9 +2,6 @@ plugins {
 	id 'org.springframework.boot' version '2.2.6.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
-	id 'war'
-	id 'org.akhikhl.gretty'
-	id 'com.google.cloud.tools.appengine'
 }
 
 group = 'com.ep.jo'
@@ -30,22 +27,6 @@ repositories {
 	jcenter()
 }
 
-gretty {
-    httpPort = 8080
-    contextPath = '/'
-    servletContainer = 'jetty9'  // What App Engine Flexible uses
-}
-
-appengine {
-
-  deploy {   // deploy configuration
-    stopPreviousVersion = true  // default - stop the current version
-    promote = true              // default - & make this the current version
-    projectId = 'GCLOUD_CONFIG' // delegate to project in gcloud config
-    version = 'GCLOUD_CONFIG'   // delegate to gcloud to generate a version
-  }
-
-}
 
 dependencies {
 
@@ -67,7 +48,6 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	implementation 'org.springframework.boot:spring-boot-starter'
-	providedCompile 'com.google.appengine:appengine:+'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
