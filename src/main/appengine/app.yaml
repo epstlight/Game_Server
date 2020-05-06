@@ -1,4 +1,4 @@
-runtime: java11
+runtime: java
 
 # Java 8 ランタイムの F1 ではメモリが 128MB だったが Java 11 では 256MB
 instance_class: F1
