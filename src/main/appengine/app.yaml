@@ -1,5 +1,7 @@
-runtime: java
+runtime: java11
 env: flex
+
+instance_class: F1
 
 handlers:
 - url: /.*
