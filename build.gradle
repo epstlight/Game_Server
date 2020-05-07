@@ -25,13 +25,21 @@ repositories {
 }
 
 dependencies {
+	//GAE App Engine
   implementation 'com.google.appengine:appengine-api-1.0-sdk:+'
-  implementation 'org.springframework.boot:spring-boot-starter-web'
   
+  //websocket
+  implementation 'org.springframework.boot:spring-boot-starter-websocket'
+  
+  //lombok annotation
   compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+	
+	//swagger - api문서
   implementation 'io.springfox:springfox-swagger2:2.6.1'
 	implementation 'io.springfox:springfox-swagger-ui:2.6.1'
+	
+	implementation 'org.springframework.boot:spring-boot-starter-web'
   testImplementation('org.springframework.boot:spring-boot-starter-test') {
     exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
   }
@@ -49,9 +57,9 @@ test {
 group   = "com.example.helloworld"
 version = "0.0.1"
 
-// Java 11 を使用
-sourceCompatibility = '11'
-targetCompatibility = '11'
+// Java 11
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
 
 appengine {
   deploy {
