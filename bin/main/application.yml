@@ -11,7 +11,10 @@ spring:
 #    password: study
 
   jpa:
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    properties:
+      hibernate:
+        dialect:MySQL5Dialect
+#    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     open-in-view: false
     show-sql: true
     hibernate:
