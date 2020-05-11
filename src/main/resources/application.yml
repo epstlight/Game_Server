@@ -1,7 +1,7 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://34.64.149.11:3306/gamedb?serverTimezone=Asia/Seoul
+    driver-class-name: com.mysql.jdbc.GoogleDriver
+    url: jdbc:google:mysql://34.64.149.11:3306/gamedb?serverTimezone=Asia/Seoul
     username: root
     password: NGqsPBsg10v2DHLa
     
