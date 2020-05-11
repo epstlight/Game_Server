@@ -6,7 +6,7 @@ buildscript {
     // Spring Boot Gradle Plugin 
     classpath 'org.springframework.boot:spring-boot-gradle-plugin:2.2.0.RELEASE'
     // Google App Engine Gradle plugin
-    classpath 'com.google.cloud.tools:appengine-gradle-plugin:2.2.0'
+    //classpath 'com.google.cloud.tools:appengine-gradle-plugin:2.2.0'
   }
 }
 
@@ -18,7 +18,7 @@ plugins {
   id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 }
 
-apply plugin: 'com.google.cloud.tools.appengine'
+//apply plugin: 'com.google.cloud.tools.appengine'
 
 repositories {
   mavenCentral()
@@ -26,7 +26,7 @@ repositories {
 
 dependencies {
 	//GAE App Engine
-  implementation 'com.google.appengine:appengine-api-1.0-sdk:+'
+  //implementation 'com.google.appengine:appengine-api-1.0-sdk:+'
   
   //websocket
   implementation 'org.springframework.boot:spring-boot-starter-websocket'
@@ -42,7 +42,6 @@ dependencies {
 	//db 관련
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	runtimeOnly 'mysql:mysql-connector-java'
- 	compileOnly group : 'com.google.cloud.sql', name :'mysql-socket-factory', version : '1.0.5'
 	
 	//api문서 swagger2
 	implementation 'io.springfox:springfox-swagger2:2.6.1'
@@ -65,20 +64,20 @@ test {
   }
 }
 
-group   = "com.example.helloworld"
+group   = "com.ep."
 version = "0.0.1"
 
 // Java 11
-sourceCompatibility = '11'
-targetCompatibility = '11'
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
 
-appengine {
-  deploy {
-    projectId = "GCLOUD_CONFIG"
-    version = "GCLOUD_CONFIG"
-  }
-}
+//appengine {
+//  deploy {
+//    projectId = "GCLOUD_CONFIG"
+//    version = "GCLOUD_CONFIG"
+//  }
+//}
 
-appengineDeploy.dependsOn test
-appengineStage.dependsOn test
+//appengineDeploy.dependsOn test
+//appengineStage.dependsOn test
 
