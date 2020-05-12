@@ -25,6 +25,10 @@ repositories {
 }
 
 dependencies {
+	implementation 'org.springframework.cloud:spring-cloud-gcp-dependencies:1.2.2.RELEASE'
+	implementation group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-sql-mysql', version: '1.2.2.RELEASE'
+	implementation group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter', version: '1.2.2.RELEASE'
+	//GAE App Engine
 	//GAE App Engine
   implementation 'com.google.appengine:appengine-api-1.0-sdk:+'
   //websocket
@@ -41,7 +45,6 @@ dependencies {
 	//db 관련
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	runtimeOnly 'mysql:mysql-connector-java'
-	//implementation 'org.springframework.cloud:spring-cloud-gcp-starter-sql-mysql'
 
 	//security
 	implementation 'org.springframework.boot:spring-boot-starter-security'

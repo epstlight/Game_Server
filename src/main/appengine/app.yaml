@@ -11,3 +11,5 @@ automatic_scaling:
 env_variables:
   JAVA_TOOL_OPTIONS: "-XX:MaxRAM=256m -XX:ActiveProcessorCount=2 -Xmx32m"
   
+beta_settings:
+      cloud_sql_instances:learned-tube-276404:asia-northeast3:game-demo-db=tcp:3306
