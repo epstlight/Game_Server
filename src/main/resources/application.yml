@@ -2,7 +2,7 @@ spring:
   cloud:
     gcp:
       sql:
-        database-name: game-demo-db
+        database-name: gamedb
         instance-connection-name: learned-tube-276404:asia-northeast3:game-demo-db
   datasource:
 #    url: jdbc:mysql://34.64.149.11:3306/gamedb?serverTimezone=Asia/Seoul
