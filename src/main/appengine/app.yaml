@@ -1,6 +1,5 @@
-runtime: java
-runtime_config:
-  jdk: openjdk11
+runtime: java11
+
 env_variables:
   SPRING_PROFILES_ACTIVE: "gcp,mysql"
   
