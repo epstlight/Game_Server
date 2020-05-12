@@ -2,14 +2,15 @@ runtime: java11
 
 env_variables:
   SPRING_PROFILES_ACTIVE: "gcp,mysql"
-network:
-  session_affinity: true
   
 handlers:
 - url: /.*
   script: this field is required, but ignored
 manual_scaling: 
   instances: 1
+  
+network:
+  instance_tag: websocket
 #automatic_scaling:
 #  max_instances: 1 # 
 #  min_instances: 0 # 
