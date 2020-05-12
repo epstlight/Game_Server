@@ -2,6 +2,8 @@ runtime: java11
 
 env_variables:
   SPRING_PROFILES_ACTIVE: "gcp,mysql"
+network:
+  session_affinity: true
   
 handlers:
 - url: /.*
