@@ -15,8 +15,7 @@ public class SocketServerUrlEndpoint {
 
 	/* ************************************ Static Fields ************************************ */
     private static final int DEFAULT_PORT = 65080;
-    private static final String NETWORK_INTERFACE_METADATA_URL = "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/external-ip";
-
+    private static final String NETWORK_INTERFACE_METADATA_URL =  "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/" + "external-ip";
 	/* ************************************ Instance Fields ************************************ */
     
 	/* ************************************ Public Methods ************************************ */
