@@ -1,4 +1,4 @@
-runtime: java
+runtime: java11
 env: flex
 
   
@@ -9,8 +9,8 @@ manual_scaling:
   instances: 1
   
 env_variables:
+  JAVA_TOOL_OPTIONS: "-XX:MaxRAM=256m -XX:ActiveProcessorCount=2 -Xmx32m"
   JETTY_MODULES_ENABLE: websocket
-  
 #network:
 #  forwarded_ports:
 #  - 65080
