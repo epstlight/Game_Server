@@ -67,8 +67,8 @@ group   = "com.ep."
 version = "0.0.1"
 
 // Java 11
-sourceCompatibility = '11'
-targetCompatibility = '11'
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
 
 appengine {
   deploy {

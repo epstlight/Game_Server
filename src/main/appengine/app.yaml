@@ -7,20 +7,26 @@ manual_scaling:
   instances: 1
   
 env_variables:
-  JAVA_TOOL_OPTIONS: "-XX:MaxRAM=256m -XX:ActiveProcessorCount=2 -Xmx32m"
+  
   JETTY_MODULES_ENABLE: websocket
-#network:
-#  forwarded_ports:
-#  - 65080
-#  instance_tag: websocket
-#  session_affinity: true
-#automatic_scaling:
-#  max_instances: 1 # 
-#  min_instances: 0 # 
-#  target_cpu_utilization: 0.95 
-#  max_concurrent_requests: 80 
 
-#env_variables:
-#  JAVA_TOOL_OPTIONS: "-XX:MaxRAM=256m -XX:ActiveProcessorCount=2 -Xmx32m"
-#  
-#beta_settings: cloud_sql_instances:learned-tube-276404:asia-northeast3:game-demo-db=tcp:3306
+runtime: java11
+env: flex
+manual_scaling:
+  instances: 1
+
+handlers:
+- url: /.*
+  script: this field is required, but ignored
+
+env_variables:
+  JETTY_MODULES_ENABLE: websocket
+  JAVA_TOOL_OPTIONS: "-XX:MaxRAM=256m -XX:ActiveProcessorCount=2 -Xmx32m"
+
+
+# For applications which can take advantage of session affinity
+# (where the load balancer will attempt to route multiple connections from
+# the same user to the same App Engine instance), uncomment the folowing:
+
+# network:
+#   session_affinity: true
