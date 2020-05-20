@@ -1,16 +1,4 @@
-runtime: java11
-  
-handlers:
-- url: /.*
-  script: this field is required, but ignored
-manual_scaling: 
-  instances: 1
-  
-env_variables:
-  
-  JETTY_MODULES_ENABLE: websocket
-
-runtime: java11
+runtime: java
 env: flex
 manual_scaling:
   instances: 1
