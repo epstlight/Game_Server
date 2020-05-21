@@ -3,6 +3,9 @@ env: flex
 
 service: default
 
+runtime_config:  # Optional
+  jdk: openjdk8
+
 handlers:
 - url: /.*
   script: this field is required, but ignored
@@ -15,10 +18,6 @@ resources:
   cpu: 1
   memory_gb: 1.5
   
-env_variables:
-  JETTY_MODULES_ENABLE: websocket
-
-
 
 # For applications which can take advantage of session affinity
 # (where the load balancer will attempt to route multiple connections from
