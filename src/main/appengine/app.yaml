@@ -1,15 +1,23 @@
-runtime: java
+untime: java
 env: flex
-manual_scaling:
-  instances: 1
+
+service: default
 
 handlers:
 - url: /.*
   script: this field is required, but ignored
 
+automatic_scaling:
+  min_num_instances: 1
+  max_num_instances: 5
+  
+resources:
+  cpu: 1
+  memory_gb: 1.5
+  
 env_variables:
   JETTY_MODULES_ENABLE: websocket
-  JAVA_TOOL_OPTIONS: "-XX:MaxRAM=256m -XX:ActiveProcessorCount=2 -Xmx32m"
+
 
 
 # For applications which can take advantage of session affinity

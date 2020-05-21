@@ -17,11 +17,15 @@ plugins {
   // https://plugins.gradle.org/plugin/io.spring.dependency-management
   id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 }
-
+apply plugin: 'war'
 apply plugin: 'com.google.cloud.tools.appengine'
 
 repositories {
   mavenCentral()
+}
+
+configurations {
+    compile.exclude module: "spring-boot-starter-tomcat"
 }
 
 dependencies {
@@ -48,7 +52,10 @@ dependencies {
 
 	//security
 	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation ("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: "spring-boot-starter-tomcat"
+    }
+	implementation "org.springframework.boot:spring-boot-starter-jetty"
   testImplementation('org.springframework.boot:spring-boot-starter-test') {
     exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
   }
