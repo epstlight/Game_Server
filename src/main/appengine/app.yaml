@@ -1,4 +1,4 @@
-untime: java
+runtime: java
 env: flex
 
 service: default
