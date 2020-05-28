@@ -1,8 +1,8 @@
 package com.ep.jo.service;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -13,7 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 
-import com.ep.jo.domain.dto.ChatRoomDto;
+import com.ep.jo.domain.entity.RoomEntity;
+import com.ep.jo.domain.repository.RoomReposiotry;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.RequiredArgsConstructor;
@@ -22,32 +23,33 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RequiredArgsConstructor
 @Service
-public class ChatService {
+public class RoomService {
 	private final ObjectMapper objectMapper;
-	private Map<String, ChatRoomDto> chatRooms;
+	private final RoomReposiotry roomRepository;
 	
-	@PostConstruct
-	private void init() {
-		chatRooms = new LinkedHashMap<>();
-	}
-	
-	public List<ChatRoomDto> findAllRoom() {
-        return new ArrayList<>(chatRooms.values());
+	public RoomEntity checkWaitRoom(int matchUid) {
+		List<RoomEntity> rooms = roomRepository.findAll();
+		for(RoomEntity room : rooms) {
+			if(room.getSecond_uid() == 0 && room.getFirst_uid() != matchUid) {
+				return joinRoom(matchUid, room);
+			}
+		}
+		return createRoom(matchUid);
     }
 	
-	public ChatRoomDto findRoomById(String roomId) {
-        return chatRooms.get(roomId);
-    }
-	
-	public ChatRoomDto createRoom(String name) {
+	public RoomEntity createRoom(int matchUid) {
         String randomId = UUID.randomUUID().toString();
-        ChatRoomDto chatRoom = ChatRoomDto.builder()
+        RoomEntity room = RoomEntity.builder()
                 .roomId(randomId)
-                .name(name)
+                .first_uid(matchUid)
                 .build();
-        chatRooms.put(randomId, chatRoom);
-        return chatRoom;
+        return roomRepository.save(room);
     }
+	
+	public RoomEntity joinRoom(int matchUid, RoomEntity room) {
+		room.setSecond_uid(matchUid);
+		return roomRepository.save(room);
+	}
 	
 	public <T> void sendMessage(WebSocketSession session, T message) {
         try {

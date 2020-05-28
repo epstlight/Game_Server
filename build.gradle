@@ -17,7 +17,7 @@ plugins {
   // https://plugins.gradle.org/plugin/io.spring.dependency-management
   id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 }
-apply plugin: 'war'
+//apply plugin: 'war'
 apply plugin: 'com.google.cloud.tools.appengine'
 
 repositories {
@@ -25,9 +25,9 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.cloud:spring-cloud-gcp-dependencies:1.2.2.RELEASE'
-	implementation group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-sql-mysql', version: '1.2.2.RELEASE'
-	implementation group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter', version: '1.2.2.RELEASE'
+	//implementation 'org.springframework.cloud:spring-cloud-gcp-dependencies:1.2.2.RELEASE'
+	//implementation group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-sql-mysql', version: '1.2.2.RELEASE'
+	//implementation group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter', version: '1.2.2.RELEASE'
 	//GAE App Engine
 	//GAE App Engine
   implementation 'com.google.appengine:appengine-api-1.0-sdk:+'
@@ -48,10 +48,11 @@ dependencies {
 
 	//security
 	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation ("org.springframework.boot:spring-boot-starter-web") {
-        exclude module: "spring-boot-starter-tomcat"
-    }
-	implementation "org.springframework.boot:spring-boot-starter-jetty"
+	implementation "org.springframework.boot:spring-boot-starter-web"
+	//implementation ("org.springframework.boot:spring-boot-starter-web") {
+  //      exclude module: "spring-boot-starter-tomcat"
+  //  }
+	//implementation "org.springframework.boot:spring-boot-starter-jetty"
   testImplementation('org.springframework.boot:spring-boot-starter-test') {
     exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
   }
@@ -70,8 +71,8 @@ group   = "com.ep."
 version = "0.0.1"
 
 // Java 11
-sourceCompatibility = '1.8'
-targetCompatibility = '1.8'
+sourceCompatibility = '11'
+targetCompatibility = '11'
 
 appengine {
   deploy {

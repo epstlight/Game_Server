@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 
+import com.ep.jo.domain.dto.LoginDto;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -44,5 +46,19 @@ public class UserEntity extends TimeEntity {
 	private int win = 0;
 	@Builder.Default
 	private int lose = 0;
+	
+	public LoginDto toDto() {
+		return LoginDto.builder()
+				.uid(uid)
+				.type("LOGIN")
+				.email(email)
+				.username(username)
+				.gold(gold)
+				.dia(dia)
+				.exp(exp)
+				.win(win)
+				.lose(lose)
+				.build();
+	}
 
 }
